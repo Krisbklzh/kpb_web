@@ -26,7 +26,7 @@ boxcox_lambda = 0.4245912219216052
 # -----------------------------
 # 2. Streamlit интерфейс
 # -----------------------------
-st.title("Прогноз уровня КПБ")
+st.title("Оценка уровня КПБ")
 st.write("Введите данные:")
 
 # Числовые поля
@@ -56,7 +56,7 @@ interrupt = st.selectbox(
 # -----------------------------
 # 3. Предсказание
 # -----------------------------
-if st.button("Предсказать КПБ"):
+if st.button("Оценить уровень КПБ"):
     num_data = pd.DataFrame([[age, experience, security_status, contribution]], columns=num_columns)
     for col in num_columns:
         num_data[col] = scaler_dict[col].transform(num_data[col].values.reshape(-1,1))
@@ -72,4 +72,4 @@ if st.button("Предсказать КПБ"):
         y_transformed = model(num_tensor, cat_tensor).cpu().numpy()[0][0]
         y_real = inv_boxcox(y_transformed, boxcox_lambda) - 1
 
-    st.success(f"Прогнозируемый уровень КПБ: {y_real:.2f}")
+    st.success(f"Уровень КПБ: {y_real:.2f}")
