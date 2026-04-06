@@ -41,13 +41,13 @@ ability_security = st.selectbox(
     "Считаю, что при выполнении работы я могу соблюдать все требования безопасности в рамках своей производственной деятельности",
     options=encode_dict['The ability to perform security'].classes_)
 errors = st.selectbox(
-    "Я не совершал ошибок в процессе своей производственной деятельности",
+    "Вы готовы сделать замечание коллеге в случае его небезопасных действий?",
     options=encode_dict['There were security errors'].classes_)
 risks = st.selectbox(
     "Я считаю, что в имеющихся условиях производственной деятельности возможно достичь показателя нулевого травматизма",
     options=encode_dict['There are risks at work'].classes_)
 audit = st.selectbox(
-    "Вы готовы сделать замечание коллеге в случае его небезопасных действий?",
+    "Я не совершал ошибок в процессе своей производственной деятельности",
     options=encode_dict['Participation in the audit'].classes_)
 interrupt = st.selectbox(
     "Вы готовы остановить выполнение работы в случае предаварийной ситуации?",
