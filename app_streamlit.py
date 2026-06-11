@@ -48,7 +48,7 @@ risks = st.selectbox(
     options=encode_dict['There are risks at work'].classes_)
 audit = st.selectbox(
     "Вы готовы сделать замечание коллеге в случае его небезопасных действий?",
-    options=["Да", "Нет", "Затрудняюсь ответить"])
+    options=["Да", "Затрудняюсь ответить", "Нет"])
 interrupt = st.selectbox(
     "Вы готовы остановить выполнение работы в случае предаварийной ситуации?",
     options=encode_dict['Interrupt work in case of danger'].classes_)
