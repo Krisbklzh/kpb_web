@@ -48,7 +48,7 @@ risks = st.selectbox(
     options=encode_dict['There are risks at work'].classes_)
 audit = st.selectbox(
     "Вы готовы сделать замечание коллеге в случае его небезопасных действий?",
-    options=encode_dict['Participation in the audit'].classes_)
+    options=["Да", "Нет", "Затрудняюсь ответить"])
 interrupt = st.selectbox(
     "Вы готовы остановить выполнение работы в случае предаварийной ситуации?",
     options=encode_dict['Interrupt work in case of danger'].classes_)
@@ -57,6 +57,8 @@ interrupt = st.selectbox(
 # 3. Предсказание
 # -----------------------------
 if st.button("Оценить уровень КПБ"):
+  if audit == "Затрудняюсь ответить":
+    audit = "Нет"
     num_data = pd.DataFrame([[age, experience, security_status, contribution]], columns=num_columns)
     for col in num_columns:
         num_data[col] = scaler_dict[col].transform(num_data[col].values.reshape(-1,1))
