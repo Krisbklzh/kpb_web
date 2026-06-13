@@ -57,8 +57,9 @@ interrupt = st.selectbox(
 # 3. Предсказание
 # -----------------------------
 if st.button("Оценить уровень КПБ"):
-  if audit == "Затрудняюсь ответить":
-    audit = "Нет"
+  
+    if audit == "Затрудняюсь ответить":
+        audit = "Нет"
     num_data = pd.DataFrame([[age, experience, security_status, contribution]], columns=num_columns)
     for col in num_columns:
         num_data[col] = scaler_dict[col].transform(num_data[col].values.reshape(-1,1))
