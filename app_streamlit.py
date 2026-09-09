@@ -23,6 +23,10 @@ scaler_dict = joblib.load('scalers.save')
 encode_dict = joblib.load('encoders.save')
 boxcox_lambda = 0.4245912219216052
 
+# 2. Фиксированные значения
+FIXED_AGE = 40 
+FIXED_EXPERIENCE = 11
+
 # -----------------------------
 # 2. Streamlit интерфейс
 # -----------------------------
@@ -60,7 +64,7 @@ if st.button("Оценить уровень КПБ"):
   
     if audit == "Затрудняюсь ответить":
         audit = "Нет"
-    num_data = pd.DataFrame([[age, experience, security_status, contribution]], columns=num_columns)
+    num_data = pd.DataFrame([[FIXED_AGE, FIXED_EXPERIENCE, security_status, contribution]], columns=num_columns)
     for col in num_columns:
         num_data[col] = scaler_dict[col].transform(num_data[col].values.reshape(-1,1))
 
