@@ -24,8 +24,8 @@ encode_dict = joblib.load('encoders.save')
 boxcox_lambda = 0.4245912219216052
 
 # 2. Фиксированные значения
-FIXED_AGE = 40 
-FIXED_EXPERIENCE = 11
+FIXED_AGE = 45 
+FIXED_EXPERIENCE = 17
 
 # -----------------------------
 # 2. Streamlit интерфейс
@@ -79,5 +79,7 @@ if st.button("Оценить уровень КПБ"):
     with torch.no_grad():
         y_transformed = model(num_tensor, cat_tensor).cpu().numpy()[0][0]
         y_real = inv_boxcox(y_transformed, boxcox_lambda) - 1
+        # Ограничение КПБ диапазоном от 1 до 5
+        y_real = max(1.0, min(5.0, float(y_real)))
 
     st.success(f"Уровень КПБ: {y_real:.2f}")
