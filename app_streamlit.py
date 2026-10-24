@@ -24,8 +24,8 @@ encode_dict = joblib.load('encoders.save')
 boxcox_lambda = 0.4245912219216052
 
 # 2. Фиксированные значения
-#FIXED_AGE = 45 
-#FIXED_EXPERIENCE = 5
+FIXED_AGE = 45 
+FIXED_EXPERIENCE = 5
 
 # -----------------------------
 # 2. Streamlit интерфейс
@@ -34,8 +34,8 @@ st.title("Оценка уровня КПБ")
 st.write("Введите данные:")
 
 # Числовые поля
-age = st.number_input("Ваш возраст?", 18, 80, 30) 
-experience = st.number_input("Ваш общий стаж?", 0, 50, 5)
+#age = st.number_input("Ваш возраст?", 18, 80, 30) 
+#experience = st.number_input("Ваш общий стаж?", 0, 50, 5)
 
 security_status = st.slider("Оцените, по шкале от 1 до 5, состояние производственной безопасности на Вашем рабочем месте", 1, 5, 3)
 contribution = st.number_input("Как Вы оцениваете свой личный вклад в обеспечение и развитие безопасности своего структурного подразделения? (%)", 0, 100, 50)
@@ -65,7 +65,7 @@ if st.button("Оценить уровень КПБ"):
   
     if audit == "Затрудняюсь ответить":
         audit = "Нет"
-    num_data = pd.DataFrame([[age, experience, security_status, contribution]], columns=num_columns)
+    num_data = pd.DataFrame([[FIXED_AGE, FIXED_EXPERIENCE, security_status, contribution]], columns=num_columns)
     for col in num_columns:
         num_data[col] = scaler_dict[col].transform(num_data[col].values.reshape(-1,1))
 
