@@ -25,7 +25,7 @@ boxcox_lambda = 0.4245912219216052
 
 # 2. Фиксированные значения
 FIXED_AGE = 45 
-FIXED_EXPERIENCE = 1
+FIXED_EXPERIENCE = 7
 
 # -----------------------------
 # 2. Streamlit интерфейс
